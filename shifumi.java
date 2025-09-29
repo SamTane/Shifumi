@@ -8,7 +8,12 @@ public class shifumi {
 		// Début du code
 		Scanner scanner = new Scanner(System.in); // Permet de scanner les infos de l'utilisateur dans toute la suite du code. 
 		
-		
+		boolean finPartie = false;
+		//Initialisation de la variable de fin de partie
+		do {
+		//Début de la partie
+
+
 		//Début Boucle nombre de Points
 		int nombrePoints; // Initialisation variable
 		do {
@@ -17,9 +22,15 @@ public class shifumi {
 			// Affichage de texte puis Lire l'entrée de l'utilisateur (ici int, un entier)
 		} while (nombrePoints != 3 && nombrePoints != 5 && nombrePoints != 10);
 		System.out.println("OK"); 
+
 		
 		
-		//Début Boucle Pierre Feuille Ciseau
+		//Début Boucle Pierre Feuille Ciseau		
+		int scoreJoueur = 0;
+		int scoreOrdinateur = 0;
+		//Initialisation des variables de Score
+		do  {
+			
 		char choixJoueur; //Initialisation variable
 		do {
 			System.out.println("Entrez P, F ou C.");
@@ -52,8 +63,7 @@ public class shifumi {
 		
 		
 		//Résultat et attribution des points		
-		int scoreJoueur = 0;
-		int scoreOrdinateur = 0;
+
 		//Initialisation des variables	
 		if (choixJoueur == choixOrdinateur) {
 			System.out.println("Égalité !"); 
@@ -71,6 +81,31 @@ public class shifumi {
 		}
 		System.out.println(" Score: " + scoreJoueur +  " - " + scoreOrdinateur);
 		
+		} while (scoreJoueur < nombrePoints && scoreOrdinateur < nombrePoints); 
+		//La partie s'arrête quand l'un des joueurs atteint le score indiqué au début.
+		
+		//Fin de la partie et résulat final
+		if (scoreJoueur > scoreOrdinateur) {
+			System.out.println("Victoire !");
+		} else {
+			System.out.println("Défaite...");
+		}
+		
+		
+		//Début programme de fin de partie
+		char reponseFin = ' '; 
+		do {
+		System.out.println("Tapez O pour rejouer et N pour arrêter.");
+	    reponseFin = scanner.next().charAt(0);
+		} while (reponseFin != 'O' && reponseFin != 'N');
+		if (reponseFin == 'N'){
+		finPartie = true; 
+		System.out.println("Au revoir!");
+		} else {
+		System.out.println("C'est reparti !");
+		}
+	    
+		} while (finPartie == false);
 	}
 }
 	
